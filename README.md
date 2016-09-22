@@ -34,4 +34,4 @@ Pragmatic Bookshelf 2008
 -  Original idea for the kata: How Object-Oriented Are You Feeling Today? - Krzysztof Jelski (Session on the Software Craftsmanship UK 2011 conference)
 
 
-based on the repository of [Sandro Mancuso]https://github.com/sandromancuso/Bank-kata
+based on the repository of [Sandro Mancuso](https://github.com/sandromancuso/Bank-kata)
