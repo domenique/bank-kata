@@ -28,7 +28,7 @@ public class Account {
   }
 
   public void withdraw(Money money, LocalDate statementDate) {
-    if (money.isNegative()) {
+    if (money.isNegative() || money.isMoreThan(amount)) {
       throw new TransactionNotAllowedException("You cannot withdraw a negative amount");
     }
     statements.add(new Statement(money.negate(), statementDate));

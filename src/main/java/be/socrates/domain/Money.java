@@ -57,4 +57,8 @@ public class Money {
   public Money negate() {
     return new Money(amount * -1);
   }
+
+  public boolean isMoreThan(Money amount) {
+    return this.amount > amount.amount;
+  }
 }
