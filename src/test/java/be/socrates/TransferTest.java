@@ -4,6 +4,7 @@ import be.socrates.domain.Account;
 import be.socrates.domain.Bank;
 import be.socrates.domain.Money;
 import be.socrates.domain.TransactionNotAllowedException;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -11,11 +12,17 @@ import static org.junit.Assert.assertThat;
 
 public class TransferTest extends AccountTest {
 
+  private Bank theBank;
+
+  @Before
+  public void setUp() {
+    theBank = new Bank();
+  }
+
   @Test
   public void canTranferBetweenAccounts() {
-    Account fromAccount = accountWith(100.00);
-    Account toAccount = accountWith(10.00);
-    Bank theBank = new Bank();
+    Account fromAccount = theBank.subscribe(100.00);
+    Account toAccount = theBank.subscribe(10.00);
 
     theBank.transfer(fromAccount, toAccount, Money.of(50.00));
 
@@ -25,18 +32,16 @@ public class TransferTest extends AccountTest {
 
   @Test(expected = TransactionNotAllowedException.class)
   public void canNotTranferIfNotEnoughMoney() {
-    Account fromAccount = accountWith(10.00);
-    Account toAccount = accountWith(0.00);
-    Bank theBank = new Bank();
+    Account fromAccount = theBank.subscribe(10.00);
+    Account toAccount = theBank.subscribe(0.00);
 
     theBank.transfer(fromAccount, toAccount, Money.of(50.00));
   }
 
   @Test(expected = TransactionNotAllowedException.class)
   public void canNotTransferANegativeAmount() {
-    Account fromAccount = accountWith(10.0);
-    Account toAccount = accountWith(10.0);
-    Bank theBank = new Bank();
+    Account fromAccount = theBank.subscribe(10.0);
+    Account toAccount = theBank.subscribe(10.0);
 
     theBank.transfer(fromAccount, toAccount, Money.of(-10.00));
   }
