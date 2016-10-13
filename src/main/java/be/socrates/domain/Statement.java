@@ -27,7 +27,7 @@ public class Statement {
     return Objects.hash(amount, date);
   }
 
-  public void print(StatementPrinter printer) {
+  void print(StatementPrinter printer) {
     printer.print(this);
   }
 }

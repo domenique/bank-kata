@@ -1,6 +1,7 @@
 package be.socrates;
 
 import be.socrates.domain.Account;
+import be.socrates.domain.AccountTest;
 import be.socrates.domain.Bank;
 import be.socrates.domain.Money;
 import be.socrates.domain.TransactionNotAllowedException;

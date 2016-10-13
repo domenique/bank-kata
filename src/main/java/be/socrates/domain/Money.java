@@ -10,8 +10,8 @@ public class Money {
     return new Money(amount);
   }
 
-  public static Money zero() {
-    return new Money(0.0);
+  static Money zero() {
+    return new Money();
   }
 
   private Money(double amount) {
@@ -42,23 +42,23 @@ public class Money {
         '}';
   }
 
-  public Money add(Money money) {
+  Money add(Money money) {
     return new Money(amount + money.amount);
   }
 
-  public boolean isNegative() {
+  boolean isNegative() {
     return amount < 0.0;
   }
 
-  public Money substract(Money money) {
+  Money substract(Money money) {
     return new Money(amount - money.amount);
   }
 
-  public Money negate() {
+  Money negate() {
     return new Money(amount * -1);
   }
 
-  public boolean isMoreThan(Money amount) {
+  boolean isMoreThan(Money amount) {
     return this.amount > amount.amount;
   }
 }

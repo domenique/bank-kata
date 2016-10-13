@@ -8,12 +8,12 @@ public class Account {
   private Money amount;
   private Statements statements;
 
-  public Account() {
+  Account() {
     this.amount = Money.zero();
     this.statements = new Statements();
   }
 
-  public Account(Money initialAmount, LocalDate statementDate) {
+  Account(Money initialAmount, LocalDate statementDate) {
     amount = initialAmount;
     this.statements = new Statements();
     statements.add(new Statement(initialAmount, statementDate));
@@ -27,7 +27,7 @@ public class Account {
     amount = amount.add(money);
   }
 
-  public void withdraw(Money money, LocalDate statementDate) {
+  void withdraw(Money money, LocalDate statementDate) {
     if (money.isNegative() || money.isMoreThan(amount)) {
       throw new TransactionNotAllowedException("You cannot withdraw a negative amount");
     }
@@ -35,7 +35,7 @@ public class Account {
     amount = amount.substract(money);
   }
 
-  public void printStatements(StatementPrinter printer) {
+  void printStatements(StatementPrinter printer) {
     statements.print(printer);
     printer.printSummary(amount);
   }
